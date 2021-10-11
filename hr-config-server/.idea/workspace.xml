@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb501d2d-574d-4391-a144-ad54795f3fc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../hr-worker/src/main/resources/bootstrap.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hr-api-gateway-zuul/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hr-api-gateway-zuul/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hr-worker/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hr-worker/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hr-worker/src/main/kotlin/com/cavalcante/hrworker/resources/WorkerResource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../hr-worker/src/main/kotlin/com/cavalcante/hrworker/resources/WorkerResource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hr-worker/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../hr-worker/src/main/resources/bootstrap.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
