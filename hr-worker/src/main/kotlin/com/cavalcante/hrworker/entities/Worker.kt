@@ -7,7 +7,7 @@ import javax.persistence.*
 data class Worker(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
-    val name: String,
-    val dailyIncome: Double,
+    val id: Long? = null,
+    val name: String? = null,
+    val dailyIncome: Double? = null,
 )
