@@ -2,6 +2,7 @@ package com.cavalcante.hrworker.resources
 
 import com.cavalcante.hrworker.entities.Worker
 import com.cavalcante.hrworker.repositories.WorkerRepository
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.env.Environment
 import org.springframework.core.env.get
 import org.springframework.http.ResponseEntity
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/workers")
-class WorkerResource(private val workerRepository: WorkerRepository, private val env: Environment) {
+class WorkerResource(
+    private val workerRepository: WorkerRepository,
+    private val env: Environment,
+    @Value("\${test.config}") private val testConfig: String
+) {
 
     @GetMapping
     fun findAll(): ResponseEntity<List<Worker>> {
@@ -25,6 +30,12 @@ class WorkerResource(private val workerRepository: WorkerRepository, private val
         println("port=${env["local.server.port"]}")
         val response = workerRepository.findById(id).get()
         return ResponseEntity.ok(response)
+    }
+
+    @GetMapping("/configs")
+    fun getConfigs(): ResponseEntity<Void> {
+        println("Test config: $testConfig")
+        return ResponseEntity.noContent().build()
     }
 
 }
