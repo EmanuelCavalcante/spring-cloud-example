@@ -1,5 +1,6 @@
 package com.cavalcante.hroauth.config
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -8,7 +9,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore
 
 
 @Configuration
-class AppConfig {
+class AppConfig(@Value("\${jwt.secret}") private val jwtSecret: String) {
 
     @Bean
     fun bCryptPasswordEncoder(): BCryptPasswordEncoder {
@@ -18,7 +19,7 @@ class AppConfig {
     @Bean
     fun accessTokenConverter(): JwtAccessTokenConverter? {
         val tokenConverter = JwtAccessTokenConverter()
-        tokenConverter.setSigningKey("MY-SECRET-KEY")
+        tokenConverter.setSigningKey(jwtSecret)
         return tokenConverter
     }
 

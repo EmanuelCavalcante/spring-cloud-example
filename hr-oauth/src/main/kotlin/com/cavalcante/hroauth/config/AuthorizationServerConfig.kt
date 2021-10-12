@@ -1,5 +1,6 @@
 package com.cavalcante.hroauth.config
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -18,7 +19,9 @@ class AuthorizationServerConfig(
     private val passwordEncoder: BCryptPasswordEncoder,
     private val tokenStore: JwtTokenStore,
     private val accessTokenConverter: JwtAccessTokenConverter,
-    private val authenticationManager: AuthenticationManager
+    private val authenticationManager: AuthenticationManager,
+    @Value("\${oauth.client.name}") private val oauthClientName:String,
+    @Value("\${oauth.client.secret}") private val oauthClientSecret:String,
 ) : AuthorizationServerConfigurerAdapter() {
 
 
@@ -30,8 +33,8 @@ class AuthorizationServerConfig(
     @Throws(Exception::class)
     override fun configure(clients: ClientDetailsServiceConfigurer) {
         clients.inMemory()
-            .withClient("myappname123")
-            .secret(passwordEncoder.encode("myappsecret123"))
+            .withClient(oauthClientName)
+            .secret(passwordEncoder.encode(oauthClientSecret))
             .scopes("read", "write")
             .authorizedGrantTypes("password")
             .accessTokenValiditySeconds(86400)

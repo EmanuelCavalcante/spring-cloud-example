@@ -30,6 +30,7 @@ class ResourceServerConfig(private val tokenStore: JwtTokenStore) : ResourceServ
     companion object {
         private val PUBLIC = arrayOf("/hr-oauth/oauth/token")
         private val OPERATOR = arrayOf("/hr-worker/**")
-        private val ADMIN = arrayOf("/hr-payroll/**", "/hr-user/**")
+        private val ADMIN =
+            arrayOf("/hr-payroll/**", "/hr-user/**", "/actuator/**", "/hr-worker/actuator/**", "/hr-oauth/actuator/**")
     }
 }
