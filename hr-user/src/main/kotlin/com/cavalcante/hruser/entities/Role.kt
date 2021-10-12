@@ -7,6 +7,6 @@ import javax.persistence.*
 data class Role(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: String? = null,
+    val id: Long? = null,
     val roleName: String? = null
 )

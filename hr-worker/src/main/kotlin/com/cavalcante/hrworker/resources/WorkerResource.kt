@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+
 @RefreshScope
 @RestController
 @RequestMapping("/workers")
 class WorkerResource(
     private val workerRepository: WorkerRepository,
-    private val env: Environment,
-    @Value("\${test.config}") private val testConfig: String
+    private val env: Environment
 ) {
 
     @GetMapping
@@ -28,15 +28,8 @@ class WorkerResource(
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Long): ResponseEntity<Worker> {
-        println("port=${env["local.server.port"]}")
         val response = workerRepository.findById(id).get()
         return ResponseEntity.ok(response)
-    }
-
-    @GetMapping("/configs")
-    fun getConfigs(): ResponseEntity<Void> {
-        println("Test config: $testConfig")
-        return ResponseEntity.noContent().build()
     }
 
 }
