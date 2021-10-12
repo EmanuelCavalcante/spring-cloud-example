@@ -20,4 +20,5 @@ class AppConfig(@Value("\${jwt.secret}") private val jwtSecret: String) {
     fun tokenStore(): JwtTokenStore? {
         return JwtTokenStore(accessTokenConverter())
     }
+
 }
